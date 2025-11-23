@@ -113,6 +113,18 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate }) => {
           </button>
         </form>
 
+        <div className="mt-6 flex justify-center">
+          <button
+            onClick={(e) => {
+              e.preventDefault();
+              onCalculate();
+            }}
+            className="px-8 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-white border border-slate-600 hover:border-slate-500 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
+          >
+            Explore the Wheel
+          </button>
+        </div>
+
         <div className="mt-8 text-center text-slate-500 text-xs">
           This is a demonstration prototype for educational purposes
         </div>

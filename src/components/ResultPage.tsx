@@ -13,11 +13,17 @@ interface ResultPageProps {
 
 export const ResultPage: React.FC<ResultPageProps> = ({ geneKey, onReset }) => {
   const [showRoots, setShowRoots] = useState(false);
+  const [selectedGeneKey, setSelectedGeneKey] = useState(geneKey);
 
-  const data = geneKeys[geneKey];
-  const trigrams = geneKeyTrigrams[geneKey];
+  const data = geneKeys[selectedGeneKey];
+  const trigrams = geneKeyTrigrams[selectedGeneKey];
   const topColor = trigramColors[trigrams.top];
   const bottomColor = trigramColors[trigrams.bottom];
+
+  const handleGeneKeyClick = (clickedGeneKey: number) => {
+    setSelectedGeneKey(clickedGeneKey);
+    setShowRoots(true);
+  };
 
   return (
     <div className="min-h-screen px-4 py-12">
@@ -36,6 +42,9 @@ export const ResultPage: React.FC<ResultPageProps> = ({ geneKey, onReset }) => {
               <h2 className="text-5xl font-light text-white mb-6">
                 Your SunKey is Gene Key {geneKey}
               </h2>
+              <p className="text-slate-400 text-sm mb-4">
+                Click any Gene Key on the wheel to explore its roots
+              </p>
               <div className="inline-flex items-center gap-3 text-slate-300 text-lg">
                 <div className="flex items-center gap-2">
                   <div
@@ -56,7 +65,7 @@ export const ResultPage: React.FC<ResultPageProps> = ({ geneKey, onReset }) => {
             </div>
 
             <div className="flex justify-center">
-              <GeneKeyWheel selectedGeneKey={geneKey} />
+              <GeneKeyWheel selectedGeneKey={selectedGeneKey} onGeneKeyClick={handleGeneKeyClick} />
             </div>
 
             <div className="grid md:grid-cols-3 gap-6">
@@ -99,11 +108,21 @@ export const ResultPage: React.FC<ResultPageProps> = ({ geneKey, onReset }) => {
             </div>
           </div>
         ) : (
-          <RootsView
-            geneKey={geneKey}
-            trigrams={trigrams}
-            onBack={() => setShowRoots(false)}
-          />
+          <div className="animate-fade-in">
+            <div className="mb-8 text-center">
+              <h2 className="text-4xl font-light text-white mb-4">
+                Gene Key {selectedGeneKey}
+              </h2>
+              <p className="text-slate-400">
+                Exploring the roots and elemental composition
+              </p>
+            </div>
+            <RootsView
+              geneKey={selectedGeneKey}
+              trigrams={trigrams}
+              onBack={() => setShowRoots(false)}
+            />
+          </div>
         )}
       </div>
     </div>

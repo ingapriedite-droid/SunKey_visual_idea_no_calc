@@ -5,9 +5,10 @@ import { trigramColors } from '../data/trigramColors';
 
 interface GeneKeyWheelProps {
   selectedGeneKey: number;
+  onGeneKeyClick?: (geneKey: number) => void;
 }
 
-export const GeneKeyWheel: React.FC<GeneKeyWheelProps> = ({ selectedGeneKey }) => {
+export const GeneKeyWheel: React.FC<GeneKeyWheelProps> = ({ selectedGeneKey, onGeneKeyClick }) => {
   const size = 500;
   const center = size / 2;
   const outerRadius = size / 2 - 20;
@@ -71,7 +72,11 @@ export const GeneKeyWheel: React.FC<GeneKeyWheelProps> = ({ selectedGeneKey }) =
           const textPos = getTextPosition(index);
 
           return (
-            <g key={index}>
+            <g
+              key={index}
+              onClick={() => onGeneKeyClick?.(gk)}
+              className={onGeneKeyClick ? "cursor-pointer" : ""}
+            >
               <path
                 d={createSlicePath(index, true)}
                 fill={topColor}
@@ -79,6 +84,7 @@ export const GeneKeyWheel: React.FC<GeneKeyWheelProps> = ({ selectedGeneKey }) =
                 strokeWidth={isSelected ? "3" : "0.5"}
                 opacity={isSelected ? 1 : 0.85}
                 filter={isSelected ? "url(#glow)" : undefined}
+                className={onGeneKeyClick ? "hover:opacity-100 transition-opacity" : ""}
               />
               <path
                 d={createSlicePath(index, false)}
@@ -87,6 +93,7 @@ export const GeneKeyWheel: React.FC<GeneKeyWheelProps> = ({ selectedGeneKey }) =
                 strokeWidth={isSelected ? "3" : "0.5"}
                 opacity={isSelected ? 1 : 0.85}
                 filter={isSelected ? "url(#glow)" : undefined}
+                className={onGeneKeyClick ? "hover:opacity-100 transition-opacity" : ""}
               />
               <text
                 x={textPos.x}
@@ -96,7 +103,7 @@ export const GeneKeyWheel: React.FC<GeneKeyWheelProps> = ({ selectedGeneKey }) =
                 transform={`rotate(${textPos.rotation}, ${textPos.x}, ${textPos.y})`}
                 className={`text-[9px] font-medium ${
                   isSelected ? 'fill-amber-400' : 'fill-slate-400'
-                }`}
+                } ${onGeneKeyClick ? 'pointer-events-none' : ''}`}
               >
                 {gk}
               </text>

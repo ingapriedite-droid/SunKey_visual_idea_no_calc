@@ -64,6 +64,12 @@ npm run typecheck
 ## Recent Updates
 
 ### Latest Change (2025-11-23)
+- **Added city and country dropdown selectors** for birth location input
+- Created comprehensive lists of major cities and countries sorted alphabetically
+- Replaced text input with dropdown menus for better UX and data consistency
+- Birth form now includes separate city and country selection fields
+
+### Previous Update (2025-11-23)
 - **Updated Gene Key sequence** to match the authentic mandala wheel order shown in the reference image
 - The wheel now correctly displays all 64 Gene Keys counterclockwise starting from Gene Key 41 at the top
 - This ensures accurate representation of the traditional Gene Keys mandala formation

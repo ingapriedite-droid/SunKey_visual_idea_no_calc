@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import { Sun } from 'lucide-react';
+import { cities } from '../data/cities';
+import { countries } from '../data/countries';
 
 interface LandingPageProps {
   onCalculate: () => void;
@@ -9,6 +11,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate }) => {
   const [birthDate, setBirthDate] = useState('');
   const [birthTime, setBirthTime] = useState('');
   const [birthCity, setBirthCity] = useState('');
+  const [birthCountry, setBirthCountry] = useState('');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -68,14 +71,38 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate }) => {
             <label className="block text-sm font-medium text-slate-200 tracking-wide">
               City of Birth
             </label>
-            <input
-              type="text"
+            <select
               value={birthCity}
               onChange={(e) => setBirthCity(e.target.value)}
-              placeholder="Enter city name"
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
               required
-            />
+            >
+              <option value="" disabled>Select city</option>
+              {cities.map((city) => (
+                <option key={city} value={city} className="bg-slate-900">
+                  {city}
+                </option>
+              ))}
+            </select>
+          </div>
+
+          <div className="space-y-2">
+            <label className="block text-sm font-medium text-slate-200 tracking-wide">
+              Country of Birth
+            </label>
+            <select
+              value={birthCountry}
+              onChange={(e) => setBirthCountry(e.target.value)}
+              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
+              required
+            >
+              <option value="" disabled>Select country</option>
+              {countries.map((country) => (
+                <option key={country} value={country} className="bg-slate-900">
+                  {country}
+                </option>
+              ))}
+            </select>
           </div>
 
           <button

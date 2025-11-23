@@ -64,15 +64,16 @@ npm run typecheck
 ## Recent Updates
 
 ### Latest Change (2025-11-23)
-- **Added city and country dropdown selectors** for birth location input
-- Created comprehensive lists of major cities and countries sorted alphabetically
-- Replaced text input with dropdown menus for better UX and data consistency
-- Birth form now includes separate city and country selection fields
+- **Fixed inner wheel color continuity** to match authentic Gene Keys mandala
+- Corrected trigram associations to ensure uninterrupted color segments in the inner ring
+- Inner wheel now displays 8 continuous color segments:
+  - Lake (7 Gene Keys), Heaven (11 Gene Keys), Wind (5 Gene Keys), Water (8 Gene Keys)
+  - Mountain (9 Gene Keys), Earth (7 Gene Keys), Thunder (8 Gene Keys), Fire (9 Gene Keys)
+- Each color segment flows continuously without interruption, matching the reference mandala design
 
-### Previous Update (2025-11-23)
-- **Updated Gene Key sequence** to match the authentic mandala wheel order shown in the reference image
-- The wheel now correctly displays all 64 Gene Keys counterclockwise starting from Gene Key 41 at the top
-- This ensures accurate representation of the traditional Gene Keys mandala formation
+### Previous Updates (2025-11-23)
+- **Added city and country dropdown selectors** for birth location input with comprehensive lists sorted alphabetically
+- **Updated Gene Key sequence** to match the authentic mandala wheel order (counterclockwise from Gene Key 41)
 
 ## Notes
 

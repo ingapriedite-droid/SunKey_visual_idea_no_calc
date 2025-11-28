@@ -1,27 +1,16 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Sun, Grid3x3 } from 'lucide-react';
-import { cities } from '../data/cities';
-import { countries } from '../data/countries';
+import { GeneKeyWheel } from './GeneKeyWheel';
 
 interface LandingPageProps {
-  onCalculate: () => void;
+  onSelectGeneKey: (geneKey: number) => void;
   onShowMap: () => void;
 }
 
-export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate, onShowMap }) => {
-  const [birthDate, setBirthDate] = useState('');
-  const [birthTime, setBirthTime] = useState('');
-  const [birthCity, setBirthCity] = useState('');
-  const [birthCountry, setBirthCountry] = useState('');
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    onCalculate();
-  };
-
+export const LandingPage: React.FC<LandingPageProps> = ({ onSelectGeneKey, onShowMap }) => {
   return (
-    <div className="min-h-screen flex items-center justify-center px-4 py-12">
-      <div className="max-w-2xl w-full">
+    <div className="min-h-screen px-4 py-12">
+      <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 animate-fade-in">
           <div className="flex justify-center mb-6">
             <div className="relative">
@@ -36,100 +25,17 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate, onShowMap
             Demo Prototype
           </p>
           <div className="mt-6 text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
-            Discover the cosmic blueprint encoded in your birth moment.
-            Enter your details below to unveil your unique Gene Key.
+            Explore the 64 Gene Keys arranged in the sacred wheel. Click any key to discover its wisdom.
           </div>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6 backdrop-blur-sm bg-white/5 p-8 rounded-2xl border border-white/10 shadow-2xl">
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-slate-200 tracking-wide">
-              Date of Birth
-            </label>
-            <input
-              type="date"
-              value={birthDate}
-              onChange={(e) => setBirthDate(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
-              required
-            />
-          </div>
+        <div className="mb-8">
+          <GeneKeyWheel onSelectGeneKey={onSelectGeneKey} />
+        </div>
 
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-slate-200 tracking-wide">
-              Time of Birth
-            </label>
-            <input
-              type="time"
-              value={birthTime}
-              onChange={(e) => setBirthTime(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
-              required
-            />
-          </div>
-
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-slate-200 tracking-wide">
-              City of Birth
-            </label>
-            <select
-              value={birthCity}
-              onChange={(e) => setBirthCity(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
-              required
-            >
-              <option value="" disabled>Select city</option>
-              {cities.map((city) => (
-                <option key={city} value={city} className="bg-slate-900">
-                  {city}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div className="space-y-2">
-            <label className="block text-sm font-medium text-slate-200 tracking-wide">
-              Country of Birth
-            </label>
-            <select
-              value={birthCountry}
-              onChange={(e) => setBirthCountry(e.target.value)}
-              className="w-full px-4 py-3 bg-slate-900/50 border border-slate-700 rounded-lg text-white focus:outline-none focus:ring-2 focus:ring-amber-400 focus:border-transparent transition-all"
-              required
-            >
-              <option value="" disabled>Select country</option>
-              {countries.map((country) => (
-                <option key={country} value={country} className="bg-slate-900">
-                  {country}
-                </option>
-              ))}
-            </select>
-          </div>
-
+        <div className="mt-8 flex justify-center">
           <button
-            type="submit"
-            className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-900 font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-amber-500/50 transform hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Find my SunKey
-          </button>
-        </form>
-
-        <div className="mt-6 flex justify-center gap-4">
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onCalculate();
-            }}
-            className="px-8 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-white border border-slate-600 hover:border-slate-500 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98]"
-          >
-            Explore the Wheel
-          </button>
-
-          <button
-            onClick={(e) => {
-              e.preventDefault();
-              onShowMap();
-            }}
+            onClick={onShowMap}
             className="px-8 py-3 bg-slate-700/50 hover:bg-slate-600/50 text-slate-300 hover:text-white border border-slate-600 hover:border-slate-500 rounded-lg transition-all duration-300 transform hover:scale-[1.02] active:scale-[0.98] flex items-center gap-2"
           >
             <Grid3x3 className="w-5 h-5" />

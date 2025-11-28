@@ -40,7 +40,7 @@ export const ResultPage: React.FC<ResultPageProps> = ({ geneKey, onReset }) => {
           <div className="space-y-12 animate-fade-in">
             <div className="text-center">
               <h2 className="text-5xl font-light text-white mb-6">
-                Your SunKey is Gene Key {geneKey}
+                Your code is Gene Key {geneKey}
               </h2>
               <p className="text-slate-400 text-sm mb-4">
                 Click any Gene Key on the wheel to explore its roots

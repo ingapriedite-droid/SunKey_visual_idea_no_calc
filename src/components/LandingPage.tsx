@@ -36,8 +36,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate, onShowMap
             Demo Prototype
           </p>
           <div className="mt-6 text-slate-400 text-sm max-w-lg mx-auto leading-relaxed">
-            Discover the cosmic blueprint encoded in your birth moment.
-            Enter your details below to unveil your unique Gene Key.
+            Reveal the roots of your consciousness — inspired by I Ching, Human Design & Gene Keys.
           </div>
         </div>
 

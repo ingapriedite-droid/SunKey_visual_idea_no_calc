@@ -30,7 +30,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate, onShowMap
             </div>
           </div>
           <h1 className="text-6xl font-light text-white mb-4 tracking-wide">
-            SunKey
+            Elemental Consciousness
           </h1>
           <p className="text-xl text-slate-300 font-light">
             Demo Prototype
@@ -110,7 +110,7 @@ export const LandingPage: React.FC<LandingPageProps> = ({ onCalculate, onShowMap
             type="submit"
             className="w-full py-4 bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-900 font-medium rounded-lg transition-all duration-300 shadow-lg hover:shadow-amber-500/50 transform hover:scale-[1.02] active:scale-[0.98]"
           >
-            Find my SunKey
+            Discover My Profile
           </button>
         </form>
 
